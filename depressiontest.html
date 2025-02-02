@@ -98,7 +98,7 @@
 
         // Loop through each question to get the values
         for (let i = 1; i <= 5; i++) {
-            const answer = document.querySelector(input[name="question${i}"]:checked);
+            const answer = document.querySelector(`input[name="question${i}"]:checked`);
             if (answer) {
                 score += parseInt(answer.value);
                 console.log(score);
@@ -120,8 +120,7 @@
         }
 
         // Display the result and suggestions
-        document.getElementById('result').innerHTML = <p>${resultText}</p><p>Suggestions:</p>${suggestions};
-
+        document.getElementById('result').innerHTML = `<p>${resultText}</p><p>Suggestions:</p>${suggestions}`;
     });
 </script>
 
