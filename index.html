@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closer App Onboarding</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #3397df, #299131);
+            background-image: url("https://cdn.pixabay.com/photo/2022/07/15/18/27/mental-health-7323725_640.png");
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin-top: 160px;
+            background-color: rgb(145, 207, 207);
+            
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .progress {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-gap: 15px;
+        }
+
+        .option {
+            background-color: #1565C0;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+        }
+
+        .option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+            background-color: #0D47A1;
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 15px;
+            }
+
+            .option {
+                padding: 14px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align:center"><b>WELCOME TO MOOD LENZ</b></h1>
+
+        <h3 style="text-align:center">Its Okay NOT to be OKK</h3>
+        <p class="subtitle">How are you feeling?</p>
+        <p class="description">Select one based on your preference</p>
+
+        <div class="options">
+            <button class="option" onclick="navigateTo('loneliness.html')">Loneliness</button>
+            <button class="option" onclick="navigateTo('depression.html')">Depression</button>
+            
+            <button class="option" onclick="navigateTo('anxiety.html')">Anxiety</button>
+            
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+      
+      
+</body>
+</html>

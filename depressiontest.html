@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depression Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+        }
+        .question {
+            margin: 10px 0;
+        }
+        label {
+            font-weight: bold;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+    
+</head>
+<body>
+
+<div class="container">
+    <h2>Depression Test</h2>
+    <form id="depressionTestForm">
+        <div class="question">
+            <label>1. How often have you felt little interest or pleasure in doing things?</label><br>
+            <input type="radio" name="question1" value="0" required> Not at all<br>
+            <input type="radio" name="question1" value="1"> Several days<br>
+            <input type="radio" name="question1" value="2"> More than half the days<br>
+            <input type="radio" name="question1" value="3"> Nearly every day<br>
+        </div>
+        <div class="question">
+            <label>2. How often have you felt down, depressed, or hopeless?</label><br>
+            <input type="radio" name="question2" value="0" required> Not at all<br>
+            <input type="radio" name="question2" value="1"> Several days<br>
+            <input type="radio" name="question2" value="2"> More than half the days<br>
+            <input type="radio" name="question2" value="3"> Nearly every day<br>
+        </div>
+        <div class="question">
+            <label>3. How often have you had trouble falling or staying asleep, or sleeping too much?</label><br>
+            <input type="radio" name="question3" value="0" required> Not at all<br>
+            <input type="radio" name="question3" value="1"> Several days<br>
+            <input type="radio" name="question3" value="2"> More than half the days<br>
+            <input type="radio" name="question3" value="3"> Nearly every day<br>
+        </div>
+        <div class="question">
+            <label>4. How often have you felt tired or had little energy?</label><br>
+            <input type="radio" name="question4" value="0" required> Not at all<br>
+            <input type="radio" name="question4" value="1"> Several days<br>
+            <input type="radio" name="question4" value="2"> More than half the days<br>
+            <input type="radio" name="question4" value="3"> Nearly every day<br>
+        </div>
+        <div class="question">
+            <label>5. How often have you felt bad about yourself — or that you are a failure or have let yourself or your family down?</label><br>
+            <input type="radio" name="question5" value="0" required> Not at all<br>
+            <input type="radio" name="question5" value="1"> Several days<br>
+            <input type="radio" name="question5" value="2"> More than half the days<br>
+            <input type="radio" name="question5" value="3"> Nearly every day<br>
+        </div>
+        <button type="submit" class="button">Submit</button>
+    </form>
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+    document.getElementById('depressionTestForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        let score = 0;
+
+        // Loop through each question to get the values
+        for (let i = 1; i <= 5; i++) {
+            const answer = document.querySelector(input[name="question${i}"]:checked);
+            if (answer) {
+                score += parseInt(answer.value);
+                console.log(score);
+            }
+        }
+
+        let resultText = '';
+        let suggestions = '';
+
+        if (score >= 10) {
+            resultText = 'Your score suggests that you may be experiencing symptoms of depression. It is strongly recommended that you consult a healthcare professional for further evaluation.';
+            suggestions = '<ul><li>Consider scheduling an appointment with a mental health professional.</li><li>Talk to a trusted friend or family member about how you are feeling.</li><li>Engage in activities that promote mental well-being, such as mindfulness or exercise.</li></ul>';
+        } else if (score >= 5) {
+            resultText = 'Your score suggests that you may be experiencing mild symptoms of depression. Consider seeking support or engaging in self-care activities.';
+            suggestions = '<ul><li>Try mindfulness practices or relaxation techniques.</li><li>Reach out to a counselor or support group to talk about your feelings.</li><li>Ensure you are getting enough sleep and staying physically active.</li></ul>';
+        } else {
+            resultText = 'Your responses suggest that you are not experiencing significant depression symptoms. However, it is always a good idea to check in with yourself regularly and seek support if you ever feel the need.';
+            suggestions = '<ul><li>Maintain a healthy lifestyle with regular exercise and balanced nutrition.</li><li>Stay connected with friends and family to maintain emotional support.</li><li>If you ever feel overwhelmed, consider reaching out to a counselor for support.</li></ul>';
+        }
+
+        // Display the result and suggestions
+        document.getElementById('result').innerHTML = <p>${resultText}</p><p>Suggestions:</p>${suggestions};
+
+    });
+</script>
+
+</body>
+</html>

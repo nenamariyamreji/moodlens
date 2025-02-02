@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depression Help</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 15px 25px;
+            margin: 20px;
+            background-color: #3498db;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>How would you like to proceed?</h2>
+    <p>Please choose one of the options below:</p>
+
+    <button onclick="location.href='depressiontest.html'">Take the Test</button>
+    <button onclick="location.href='sleep.html'">Track Your Sleep</button>
+
+    <button onclick="location.href='journal.html'">Write in Journal</button>
+    <button onclick="openChat()">Chat with Us</button>
+</div>
+
+<script>
+    function openChat() {
+        // Add Zoho chat script here or redirect to your chat service.
+        window.$zoho = window.$zoho || {};
+        $zoho.salesiq = $zoho.salesiq || { ready: function() {} };
+        var script = document.createElement('script');
+        script.id = 'zsiqscript';
+        script.src = "https://salesiq.zohopublic.in/widget?wc=siq8b034b174a2540f5a689db17aa7eeb28194840b3dd84eaacccce874d2d8bd2ff";
+        script.defer = true;
+        document.body.appendChild(script);
+    }
+</script>
+
+</body>
+</html>

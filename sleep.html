@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-image: url('https://www.mdanderson.org/cancerwise/2023/09/how-sleep-affects-your-health-and-how-to-get-more-of-it/jcr:content/blog/adaptiveimage.resize.702.404.jpg'); /* Path to your image */
+            background-size: cover; /* Cover the whole background */
+            background-position: center; /* Center the image */
+            background-attachment: fixed; /* Keep the background fixed when scrolling */
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .entries {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .entry {
+            background: #fff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sleep Tracker</h2>
+        <label for="sleepStart">Sleep Start Time:</label>
+        <input type="datetime-local" id="sleepStart">
+        <label for="sleepEnd">Wake-up Time:</label>
+        <input type="datetime-local" id="sleepEnd">
+        <button onclick="saveSleepEntry()">Save Entry</button>
+        <div class="entries" id="entries"></div>
+    </div>
+
+    <script>
+        function saveSleepEntry() {
+            let sleepStart = document.getElementById("sleepStart").value;
+            let sleepEnd = document.getElementById("sleepEnd").value;
+            
+            if (!sleepStart || !sleepEnd) {
+                alert("Please enter both sleep start and wake-up time.");
+                return;
+            }
+            
+            let entries = JSON.parse(localStorage.getItem("sleepEntries")) || [];
+            entries.push({ start: sleepStart, end: sleepEnd });
+            localStorage.setItem("sleepEntries", JSON.stringify(entries));
+            displayEntries();
+        }
+        
+        function displayEntries() {
+            let entries = JSON.parse(localStorage.getItem("sleepEntries")) || [];
+            let entriesDiv = document.getElementById("entries");
+            entriesDiv.innerHTML = "";
+            
+            entries.forEach(entry => {
+                let entryDiv = document.createElement("div");
+                entryDiv.classList.add("entry");
+                entryDiv.innerHTML = "<strong>Sleep Start:</strong> " + entry.start + " <br> <strong>Wake-up Time:</strong> " + entry.end;
+                entriesDiv.appendChild(entryDiv);
+            });
+        }
+        
+        window.onload = displayEntries;
+    </script>
+</body>
+</html>

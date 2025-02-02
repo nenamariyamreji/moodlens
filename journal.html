@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .entries {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .entry {
+            background: #fff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>My Journal</h2>
+        <textarea id="journalEntry" placeholder="Write your thoughts here..."></textarea>
+        <button onclick="saveEntry()">Save Entry</button>
+        <div class="entries" id="entries"></div>
+    </div>
+
+    <script>
+        function saveEntry() {
+            let entryText = document.getElementById("journalEntry").value;
+            if (entryText.trim() === "") {
+                alert("Please write something before saving.");
+                return;
+            }
+            
+            let entries = JSON.parse(localStorage.getItem("journalEntries")) || [];
+            entries.push({ text: entryText, date: new Date().toLocaleString() });
+            localStorage.setItem("journalEntries", JSON.stringify(entries));
+            document.getElementById("journalEntry").value = "";
+            displayEntries();
+        }
+        
+        function displayEntries() {
+            let entries = JSON.parse(localStorage.getItem("journalEntries")) || [];
+            let entriesDiv = document.getElementById("entries");
+            entriesDiv.innerHTML = "";
+            
+            entries.forEach(entry => {
+                let entryDiv = document.createElement("div");
+                entryDiv.classList.add("entry");
+                entryDiv.innerHTML = `<strong>${entry.date}</strong><p>${entry.text}</p>`;
+                entriesDiv.appendChild(entryDiv);
+            });
+        }
+        
+        window.onload = displayEntries;
+    </script>
+</body>
+</html>
